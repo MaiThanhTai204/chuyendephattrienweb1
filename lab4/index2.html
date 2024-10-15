@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../lab4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../lab4/css/all.css">
+    <link rel="stylesheet" href="../lab4/css/all.min.css">
+    <style>
+        .image-54 {
+            background: url(./images/banner-54.jpg);
+            width: 100%;
+            background-size: cover;
+            padding: 170px 170px;
+        }
+
+        .image-54:hover {
+            transform: scale(1.5);
+        }
+
+        .ube-banner-title1 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            position: relative;
+            font-size: 1.5em;
+            top: 200px;
+            right: 40px;
+        }
+
+        .ube-banner-title2 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            position: relative;
+            font-size: 1.5em;
+            top: 400px;
+            /* right: 0px; */
+        }
+
+        .ube-banner-title3 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            position: relative;
+            font-size: 1.5em;
+            top: 400px;
+            /* right: 0px; */
+        }
+
+        .ube-banner-btn1 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            position: relative;
+            top: 205px;
+            right: 40px;
+        }
+
+        .ube-banner-btn2 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            position: relative;
+            top: 400px;
+            /* right: 0px; */
+        }
+
+        .ube-banner-btn3 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            position: relative;
+            top: 400px;
+            /* right: 0px; */
+        }
+
+        .image-container {
+            width: 100%;
+            /* Chiều rộng cố định của khung chứa ảnh */
+            height: 500px;
+            /* Chiều cao cố định của khung chứa ảnh */
+            overflow: hidden;
+            /* Giới hạn ảnh bên trong khung */
+            position: relative;
+        }
+
+        .hover-image {
+            width: 100%;
+            /* Ảnh sẽ phủ toàn bộ chiều rộng của khung */
+            height: 100%;
+            /* Ảnh phủ hết chiều cao khung */
+            transition: transform 0.5s ease, top 0.5s ease, left 0.5s ease;
+            /* Tạo hiệu ứng mượt mà khi hover */
+            position: absolute;
+            /* Đặt ảnh ở vị trí tuyệt đối bên trong khung */
+            top: 0;
+            left: 0;
+        }
+
+        .image-container:hover .hover-image {
+            transform: scale(1.5);
+            /* Phóng to ảnh 1.5 lần khi hover */
+            top: -50px;
+            /* Điều chỉnh vị trí của ảnh theo chiều dọc khi phóng to */
+            left: -50px;
+            /* Điều chỉnh vị trí của ảnh theo chiều ngang khi phóng to */
+        }
+
+        /* #b88539 */
+        .ube-btn-text:hover {
+            color: #b88539;
+        }
+
+        /* General styles */
+
+        /* Định dạng ban đầu cho container và hình ảnh chính */
+        .image-container2 {
+            position: relative;
+            display: inline-block;
+        }
+
+        .main-image {
+            width: 100%;
+            height: auto;
+            transition: opacity 0.5s ease;
+        }
+
+        /* Ẩn nội dung hover khi không hover vào */
+        .hover-content {
+            position: absolute;
+            top: 0;
+            right: -100px;
+            display: flex;
+            flex-direction: column;
+            opacity: 0;
+            transition: right 0.5s ease, opacity 0.5s ease;
+        }
+
+        .hover-item {
+            background-color: #f0f0f0;
+            margin: 5px;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        /* Khi hover vào hình ảnh, thay đổi hình ảnh và hiển thị các phần tử */
+        .image-container2:hover .main-image {
+            opacity: 0;
+        }
+
+        .image-container2:hover .hover-content {
+            right: 10px;
+            /* Di chuyển phần tử vào rìa phải của ảnh */
+            z-index: 1;
+            opacity: 1;
+            /* Hiển thị các phần tử */
+        }
+
+        /* Khi hover, tạo ra hình ảnh đè lên */
+        .image-container2:hover::before {
+            content: '';
+            /* Quan trọng: để tạo ra pseudo-element */
+            position: absolute;
+            background-image: url('./images/product-01-1-1.jpg');
+            background-size: cover;
+            /* Hoặc contain tuỳ theo kích thước bạn muốn */
+            background-repeat: no-repeat;
+            display: block;
+            /* Đảm bảo pseudo-element hiển thị */
+            width: 100%;
+            height: 100%;
+            /* Giúp pseudo-element chiếm toàn bộ container */
+            top: 0;
+            left: 0;
+            z-index: 1;
+            /* Đảm bảo pseudo-element nằm trên ảnh ban đầu */
+            transition: opacity 0.5s ease;
+            /* Tạo hiệu ứng mượt khi hover */
+            opacity: 1;
+        }
+
+        .image-container2::before {
+            opacity: 0;
+            /* Ẩn pseudo-element khi không hover */
+        }
+
+        .star {
+            color: #b88539;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .text-star {
+            text-decoration: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: black;
+            font-size: 0.8em;
+        }
+
+        .text-star:hover {
+            text-decoration: underline;
+        }
+        .image-container3{
+            position: relative;
+            display: inline-block;
+        }
+
+        .main-image {
+            width: 100%;
+            height: auto;
+            transition: opacity 0.5s ease;
+        }
+
+        /* Ẩn nội dung hover khi không hover vào */
+        .hover-content {
+            position: absolute;
+            top: 0;
+            right: -100px;
+            display: flex;
+            flex-direction: column;
+            opacity: 0;
+            transition: right 0.5s ease, opacity 0.5s ease;
+        }
+
+        .hover-item {
+            background-color: #f0f0f0;
+            margin: 5px;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+        }
+         .image-container3:hover .main-image {
+            opacity: 0;
+        }
+
+        .image-container3:hover .hover-content {
+            right: 10px;
+            /* Di chuyển phần tử vào rìa phải của ảnh */
+            z-index: 1;
+            opacity: 1;
+            /* Hiển thị các phần tử */
+        }
+
+        /* Khi hover, tạo ra hình ảnh đè lên */
+        .image-container3:hover::before {
+            content: '';
+            /* Quan trọng: để tạo ra pseudo-element */
+            position: absolute;
+            background-image: url('./images/product-11-1-1.jpg');
+            background-size: cover;
+            /* Hoặc contain tuỳ theo kích thước bạn muốn */
+            background-repeat: no-repeat;
+            display: block;
+            /* Đảm bảo pseudo-element hiển thị */
+            width: 100%;
+            height: 100%;
+            /* Giúp pseudo-element chiếm toàn bộ container */
+            top: 0;
+            left: 0;
+            z-index: 1;
+            /* Đảm bảo pseudo-element nằm trên ảnh ban đầu */
+            transition: opacity 0.5s ease;
+            /* Tạo hiệu ứng mượt khi hover */
+            opacity: 1;
+        }
+
+        .image-container3::before {
+            opacity: 0;
+            /* Ẩn pseudo-element khi không hover */
+        }
+
+        .star {
+            color: #b88539;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .text-star {
+            text-decoration: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: black;
+            font-size: 0.8em;
+        }
+
+        .text-star:hover {
+            text-decoration: underline;
+        }
+
+
+
+        .image-container4{
+            position: relative;
+            display: inline-block;
+        }
+
+        .main-image {
+            width: 100%;
+            height: auto;
+            transition: opacity 0.5s ease;
+        }
+
+        /* Ẩn nội dung hover khi không hover vào */
+        .hover-content {
+            position: absolute;
+            top: 0;
+            right: -100px;
+            display: flex;
+            flex-direction: column;
+            opacity: 0;
+            transition: right 0.5s ease, opacity 0.5s ease;
+        }
+
+        .hover-item {
+            background-color: #f0f0f0;
+            margin: 5px;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+        }
+         .image-container4:hover .main-image {
+            opacity: 0;
+        }
+
+        .image-container4:hover .hover-content {
+            right: 10px;
+            /* Di chuyển phần tử vào rìa phải của ảnh */
+            z-index: 1;
+            opacity: 1;
+            /* Hiển thị các phần tử */
+        }
+
+        /* Khi hover, tạo ra hình ảnh đè lên */
+        .image-container4:hover::before {
+            content: '';
+            /* Quan trọng: để tạo ra pseudo-element */
+            position: absolute;
+            background-image: url('./images/product-02-1-1.jpg');
+            background-size: cover;
+            /* Hoặc contain tuỳ theo kích thước bạn muốn */
+            background-repeat: no-repeat;
+            display: block;
+            /* Đảm bảo pseudo-element hiển thị */
+            width: 100%;
+            height: 100%;
+            /* Giúp pseudo-element chiếm toàn bộ container */
+            top: 0;
+            left: 0;
+            z-index: 1;
+            /* Đảm bảo pseudo-element nằm trên ảnh ban đầu */
+            transition: opacity 0.5s ease;
+            /* Tạo hiệu ứng mượt khi hover */
+            opacity: 1;
+        }
+
+        .image-container4::before {
+            opacity: 0;
+            /* Ẩn pseudo-element khi không hover */
+        }
+
+        .star {
+            color: #b88539;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .text-star {
+            text-decoration: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: black;
+            font-size: 0.8em;
+        }
+
+        .text-star:hover {
+            text-decoration: underline;
+        }
+        .image-container5{
+            position: relative;
+            display: inline-block;
+        }
+
+        .main-image {
+            width: 100%;
+            height: auto;
+            transition: opacity 0.5s ease;
+        }
+
+        /* Ẩn nội dung hover khi không hover vào */
+        .hover-content {
+            position: absolute;
+            top: 0;
+            right: -100px;
+            display: flex;
+            flex-direction: column;
+            opacity: 0;
+            transition: right 0.5s ease, opacity 0.5s ease;
+        }
+
+        .hover-item {
+            background-color: #f0f0f0;
+            margin: 5px;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+        }
+         .image-container5:hover .main-image {
+            opacity: 0;
+        }
+
+        .image-container5:hover .hover-content {
+            right: 10px;
+            /* Di chuyển phần tử vào rìa phải của ảnh */
+            z-index: 1;
+            opacity: 1;
+            /* Hiển thị các phần tử */
+        }
+
+        /* Khi hover, tạo ra hình ảnh đè lên */
+        .image-container5:hover::before {
+            content: '';
+            /* Quan trọng: để tạo ra pseudo-element */
+            position: absolute;
+            background-image: url('./images/product-14-1-1.jpg');
+            background-size: cover;
+            /* Hoặc contain tuỳ theo kích thước bạn muốn */
+            background-repeat: no-repeat;
+            display: block;
+            /* Đảm bảo pseudo-element hiển thị */
+            width: 100%;
+            height: 100%;
+            /* Giúp pseudo-element chiếm toàn bộ container */
+            top: 0;
+            left: 0;
+            z-index: 1;
+            /* Đảm bảo pseudo-element nằm trên ảnh ban đầu */
+            transition: opacity 0.5s ease;
+            /* Tạo hiệu ứng mượt khi hover */
+            opacity: 1;
+        }
+
+        .image-container5::before {
+            opacity: 0;
+            /* Ẩn pseudo-element khi không hover */
+        }
+
+        .star {
+            color: #b88539;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .text-star {
+            text-decoration: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: black;
+            font-size: 0.8em;
+        }
+
+        .text-star:hover {
+            text-decoration: underline;
+        }
+
+        .image-container6{
+            position: relative;
+            display: inline-block;
+        }
+
+        .main-image {
+            width: 100%;
+            height: auto;
+            transition: opacity 0.5s ease;
+        }
+
+        /* Ẩn nội dung hover khi không hover vào */
+        .hover-content {
+            position: absolute;
+            top: 0;
+            right: -100px;
+            display: flex;
+            flex-direction: column;
+            opacity: 0;
+            transition: right 0.5s ease, opacity 0.5s ease;
+        }
+
+        .hover-item {
+            background-color: #f0f0f0;
+            margin: 5px;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+        }
+         .image-container6:hover .main-image {
+            opacity: 0;
+        }
+
+        .image-container6:hover .hover-content {
+            right: 10px;
+            /* Di chuyển phần tử vào rìa phải của ảnh */
+            z-index: 1;
+            opacity: 1;
+            /* Hiển thị các phần tử */
+        }
+
+        /* Khi hover, tạo ra hình ảnh đè lên */
+        .image-container6:hover::before {
+            content: '';
+            /* Quan trọng: để tạo ra pseudo-element */
+            position: absolute;
+            background-image: url('./images/product-03-1-1.jpg');
+            background-size: cover;
+            /* Hoặc contain tuỳ theo kích thước bạn muốn */
+            background-repeat: no-repeat;
+            display: block;
+            /* Đảm bảo pseudo-element hiển thị */
+            width: 100%;
+            height: 100%;
+            /* Giúp pseudo-element chiếm toàn bộ container */
+            top: 0;
+            left: 0;
+            z-index: 1;
+            /* Đảm bảo pseudo-element nằm trên ảnh ban đầu */
+            transition: opacity 0.5s ease;
+            /* Tạo hiệu ứng mượt khi hover */
+            opacity: 1;
+        }
+
+        .image-container6::before {
+            opacity: 0;
+            /* Ẩn pseudo-element khi không hover */
+        }
+
+        .star {
+            color: #b88539;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .text-star {
+            text-decoration: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: black;
+            font-size: 0.8em;
+        }
+
+        .text-star:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- <span class="ube-btn-text">Shop all Categories</span> -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-12">
+
+                <h2 class="ube-heading-title" style="font-weight: 20px;">Shop Categories</h2>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <div style="text-align: right; margin-top: 10px;">
+
+                    <span class="ube-btn-text">Shop all Categories</span>
+                    <span class="ube-btn-icon"><i aria-hidden="true" class="fas fa-arrow-right"></i></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container my-5">
+        <div class="row">
+
+            <div class="col-md-3 col-sm-6">
+
+                <div class="image-container">
+                    <img src="./images/banner-54.jpg" alt="Hover to zoom image" class="hover-image img-54">
+                    <div class="image-54">
+                        <h4 class="ube-banner-title1"> <a> Hand Cream </a></h4>
+                        <a href="#" class="ube-banner-btn1"> Shop <span style="">Now</span> </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="image-container">
+                    <img src="./images/banner-56.jpg" alt="Hover to zoom image" class="hover-image img-54">
+
+                    <h4 class="ube-banner-title2"> <a> Skincare </a></h4>
+                    <a href="#" class="ube-banner-btn2"> Shop <span>Now</span> </a>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="image-container">
+                    <img src="./images/banner-55.jpg" alt="Hover to zoom image" class="hover-image img-54">
+
+                    <h4 class="ube-banner-title3"> <a> Bodycare </a></h4>
+                    <a href="#" class="ube-banner-btn3"> Shop <span>Now</span> </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-12">
+
+                <h2 class="ube-heading-title" style="font-weight: 20px;">
+                    <h2 class="ube-heading-title">Our Bestsellers</h2>
+                </h2>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <div style="text-align: right; margin-top: 10px;">
+                    <span class="ube-btn-text">Shop all products</span>
+                    <span class="ube-btn-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                            viewBox="0 0 20 20" fill="none">
+                            <path d="M2.5 8H13.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                stroke-linejoin="round"></path>
+                            <path d="M9 3.5L13.5 8L9 12.5" stroke="currentColor" stroke-width="1.5"
+                                stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2 col-sm-6 ">
+                <!-- https://glowing.g5plus.net/elementor/cart/ -->
+                <div class="image-container2">
+                    <img src="./images/product-01-05.jpg" alt="Image 1" class="main-image">
+                    <div class="hover-content">
+                        <div class="hover-item">
+                            <i class="fa-solid fa-envelope"></i>
+                           
+                        </div>
+                        <div class="hover-item"><i class="fa-regular fa-eye"></i></div>
+                        <div class="hover-item"><i class="fa-solid fa-star"></i></div>
+                        <div class="hover-item"><i class="fa-solid fa-code-compare"></i></div>
+                    </div>
+                </div>
+                <div>
+                    <div style="text-align: center;">
+
+                        <span style="font-weight: bold; text-align: center;"
+                            class="woocommerce-Price-amount amount"><bdi><span
+                                    class="woocommerce-Price-currencySymbol">$</span>15.00 - </bdi></span>
+                        <span style="font-weight: bold; text-align: center;"
+                            class="woocommerce-Price-amount amount"><bdi><span
+                                    class="woocommerce-Price-currencySymbol">$</span>20.00</bdi></span>
+                    </div>
+                </div>
+
+                <a class="text-star" href="">Natural Coconut
+                    Cleansing <br> </a>
+                <h6 class="text-star">Oil</h6>
+                <div class="star">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                        class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+            </div>
+            <div class="col-md-2 col-sm-6 ">    <!-- https://glowing.g5plus.net/elementor/cart/ -->
+                <div class="image-container3">
+                    
+                    <img src="./images/product-11-3.jpg" alt="Image 1" class="main-image">
+                    <div class="hover-content">
+                        <div class="hover-item">
+                            <i class="fa-solid fa-envelope"></i>
+                           
+                        </div>
+                        <div class="hover-item"><i class="fa-regular fa-eye"></i></div>
+                        <div class="hover-item"><i class="fa-solid fa-star"></i></div>
+                        <div class="hover-item"><i class="fa-solid fa-code-compare"></i></div>
+                    </div>
+                </div>
+                <div>
+                    <div style="text-align: center;">
+
+                        <span style="font-weight: bold; text-align: center;"
+                            class="woocommerce-Price-amount amount"><bdi><span
+                                    class="woocommerce-Price-currencySymbol">$</span>15.00 - </bdi></span>
+                        <span style="font-weight: bold; text-align: center;"
+                            class="woocommerce-Price-amount amount"><bdi><span
+                                    class="woocommerce-Price-currencySymbol">$</span>20.00</bdi></span>
+                    </div>
+                </div>
+
+                <a class="text-star" href="">Natural Coconut
+                    Cleansing <br> </a>
+                <h6 class="text-star">Oil</h6>
+                <div class="star">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                        class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div></div>
+            <div class="col-md-2 col-sm-6 ">    <!-- https://glowing.g5plus.net/elementor/cart/ -->
+                <div class="image-container4">
+                    <img src="./images/product-02-3.jpg" alt="Image 1" class="main-image">
+                    <div class="hover-content">
+                        <div class="hover-item">
+                            <i class="fa-solid fa-envelope"></i>
+                           
+                        </div>
+                        <div class="hover-item"><i class="fa-regular fa-eye"></i></div>
+                        <div class="hover-item"><i class="fa-solid fa-star"></i></div>
+                        <div class="hover-item"><i class="fa-solid fa-code-compare"></i></div>
+                    </div>
+                </div>
+                <div>
+                    <div style="text-align: center;">
+
+                        <span style="font-weight: bold; text-align: center;"
+                            class="woocommerce-Price-amount amount"><bdi><span
+                                    class="woocommerce-Price-currencySymbol">$</span>15.00 - </bdi></span>
+                        <span style="font-weight: bold; text-align: center;"
+                            class="woocommerce-Price-amount amount"><bdi><span
+                                    class="woocommerce-Price-currencySymbol">$</span>20.00</bdi></span>
+                    </div>
+                </div>
+
+                <a class="text-star" href="">Natural Coconut
+                    Cleansing <br> </a>
+                <h6 class="text-star">Oil</h6>
+                <div class="star">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                        class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div></div>
+            <div class="col-md-2 col-sm-6 ">    <!-- https://glowing.g5plus.net/elementor/cart/ -->
+                <div class="image-container5">
+                    <img src="./images/product-14-3.jpg" alt="Image 1" class="main-image">
+                    <div class="hover-content">
+                        <div class="hover-item">
+                            <i class="fa-solid fa-envelope"></i>
+                           
+                        </div>
+                        <div class="hover-item"><i class="fa-regular fa-eye"></i></div>
+                        <div class="hover-item"><i class="fa-solid fa-star"></i></div>
+                        <div class="hover-item"><i class="fa-solid fa-code-compare"></i></div>
+                    </div>
+                </div>
+                <div>
+                    <div style="text-align: center;">
+
+                        <span style="font-weight: bold; text-align: center;"
+                            class="woocommerce-Price-amount amount"><bdi><span
+                                    class="woocommerce-Price-currencySymbol">$</span>15.00 - </bdi></span>
+                        <span style="font-weight: bold; text-align: center;"
+                            class="woocommerce-Price-amount amount"><bdi><span
+                                    class="woocommerce-Price-currencySymbol">$</span>20.00</bdi></span>
+                    </div>
+                </div>
+
+                <a class="text-star" href="">Natural Coconut
+                    Cleansing <br> </a>
+                <h6 class="text-star">Oil</h6>
+                <div class="star">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                        class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div></div>
+            <div class="col-md-2 col-sm-6 ">    <!-- https://glowing.g5plus.net/elementor/cart/ -->
+                <div class="image-container6">
+                    <img src="./images/product-03-4.jpg" alt="Image 1" class="main-image">
+                    <div class="hover-content">
+                        <div class="hover-item">
+                            <i class="fa-solid fa-envelope"></i>
+                           
+                        </div>
+                        <div class="hover-item"><i class="fa-regular fa-eye"></i></div>
+                        <div class="hover-item"><i class="fa-solid fa-star"></i></div>
+                        <div class="hover-item"><i class="fa-solid fa-code-compare"></i></div>
+                    </div>
+                </div>
+                <div>
+                    <div style="text-align: center;">
+
+                        <span style="font-weight: bold; text-align: center;"
+                            class="woocommerce-Price-amount amount"><bdi><span
+                                    class="woocommerce-Price-currencySymbol">$</span>15.00 - </bdi></span>
+                        <span style="font-weight: bold; text-align: center;"
+                            class="woocommerce-Price-amount amount"><bdi><span
+                                    class="woocommerce-Price-currencySymbol">$</span>20.00</bdi></span>
+                    </div>
+                </div>
+
+                <a class="text-star" href="">Natural Coconut
+                    Cleansing <br> </a>
+                <h6 class="text-star">Oil</h6>
+                <div class="star">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                        class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div></div>
+        </div>
+    </div>
+
+    <script src="../lab4/js/bootstrap.min.js"></script>
+</body>
+
+</html>
