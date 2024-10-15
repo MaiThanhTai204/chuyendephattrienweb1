@@ -1,0 +1,116 @@
+footer {
+    background: #152545;
+    padding: 50px 0;
+}
+
+p {
+    margin-top: 15px;
+    margin-bottom: 1rem;
+}
+
+.button {
+    background: #00aeef;
+    padding: 15px 30px;
+    font-weight: bold;
+    text-align: center;
+    width: 160px;
+    height: 50px;
+    color: #fff;
+}
+
+h3 {
+    /* font-weight: bold; */
+    color: #fff;
+}
+
+/* #13213e */
+.fab {
+    background: #13213e;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    text-align: center;
+    line-height: 15px;
+    align-items: center;
+    justify-content: center;
+    color: #edebeb;
+    text-decoration: none;
+    text-decoration: #13213e;
+}
+
+.fas {
+    margin-top: 20px;
+    color: #00aeef;
+    font-size: 30px;
+}
+
+.fa-location-arrow {
+    background: #13213e;
+    width: 30px;
+    height: 30px;
+}
+
+.input-container {
+    position: relative;
+    overflow: hidden;
+}
+
+.input-container i {
+    position: absolute;
+    right: 80px;
+    top: -20px;
+    background: #fff;
+
+
+}
+hr{
+    color: #fff;
+
+    margin-top: 80px;
+}
+/* Phong cách chung cho nút */
+.hover-button {
+    display: block;
+    width: 160px;
+    height: 50px;
+    text-align: center;
+    background: #00aeef;
+    position: relative;
+    /* z-index: 1; */
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: transparent;
+    border: 2px solid #000;
+    cursor: pointer;
+    overflow: hidden; /* Để ngăn phần tử pseudo tràn ra ngoài */
+    transition: color 0.4s ease; /* Để thay đổi màu chữ */
+}
+
+.hover-button::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 300%;
+    background-color: black;
+    transition: width 0.4s ease, left 0.4s ease;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+}
+
+.hover-button:hover::before {
+    width: 300%;
+    left: 50%;
+}
+
+.hover-button:hover {
+    color: #fff; /* Đổi màu chữ thành trắng khi hover */
+}
+
+.hover-button span {
+    position: relative;
+    z-index: 1;
+}
